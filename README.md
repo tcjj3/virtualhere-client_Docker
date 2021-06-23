@@ -7,7 +7,7 @@ DockerFile here: https://github.com/tcjj3/virtualhere-client_Docker/blob/master/
 (This works under Windows and Mac, for Linux use KVM containers https://github.com/gotoz/runq/)
 
 1. Plug the USB device into a purchased virtualhere server. 
-2. Run the container like this <code>docker run -td --privileged --name vhclient -v /lib/modules:/lib/modules tcjj3/virtualhere-client:latest ./vhclientx86_64</code>
+2. Run the container like this <code>docker run -td --privileged --restart always --name vhclient -v /lib/modules:/lib/modules tcjj3/virtualhere-client:latest ./vhclientx86_64</code>
 3. Now you can use the virtualhere API to connect to the virtualhere server and use a device. 
 
 For example:
