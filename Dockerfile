@@ -11,6 +11,7 @@ RUN export DIR_TMP="$(mktemp -d)" \
   && apt-get install --no-install-recommends -y wget \
                                                 ca-certificates \
                                                 curl \
+                                                kmod \
                                                 procps \
                                                 psmisc \
                                                 net-tools \
