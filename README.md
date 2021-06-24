@@ -7,15 +7,20 @@ DockerFile here: https://github.com/tcjj3/virtualhere-client_Docker/blob/master/
 (This works under Windows and Mac, for Linux use KVM containers https://github.com/gotoz/runq/)
 
 1. Plug the USB device into a purchased virtualhere server. 
-2. Run the container like this <code>docker run -td --privileged --restart always --name vhclient -v /lib/modules:/lib/modules tcjj3/virtualhere-client_docker:latest ./vhclientx86_64</code>
+2. Run the container like this:
+   <pre>docker run -td --privileged --restart always --name vhclient -v /lib/modules:/lib/modules tcjj3/virtualhere-client_docker:latest ./vhclient</pre>
+    or 
+   <pre>docker volume create vhclient_config
+   docker run -td --privileged --restart always --name vhclient -v /lib/modules:/lib/modules -v vhclient_config:/root tcjj3/virtualhere-client_docker:latest ./vhclient</pre>
+
 3. Now you can use the virtualhere API to connect to the virtualhere server and use a device. 
 
 For example:
 <pre>
-C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient ./vhclientx86_64 -t "MANUAL HUB ADD,192.168.0.16"
+C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient ./vhclient -t "MANUAL HUB ADD,192.168.0.16"
 OK
 
-C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient ./vhclientx86_64 -t "LIST"
+C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient ./vhclient -t "LIST"
 VirtualHere Client IPC, below are the available devices:
 (Value in brackets = address, * = Auto-Use)
 
@@ -31,7 +36,7 @@ Reverse Lookup currently off
 Reverse SSL Lookup currently off
 VirtualHere Client not running as a service
 
-C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient ./vhclientx86_64 -t "USE,server.111"
+C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient ./vhclient -t "USE,server.111"
 OK
 
 C:\Users\tcjj3\docker-virtualhere-client>docker exec vhclient lsusb
